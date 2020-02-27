@@ -311,6 +311,10 @@ html, body {
 	top:1px;
 }
 
+.worldBoss {
+	display: none;
+}
+
 
 /* CSS animation */
 

@@ -7,12 +7,23 @@
  */
 var bossName;
 var errors = false;
+var selectedForm = 'bossform';
 
 /*
  * Runs when DOM is fully loaded
  *
  */
 $(document).ready(function() {
+	// Changes the form based on user select
+	$("#changeForm").on("change", function(e){
+		selectedForm = $("#changeForm").val();
+
+		$(".worldBoss").css("display", "none");
+
+		if(selectedForm == 'worldbossform'){
+			$(".worldBoss").css("display", "grid");
+		}
+	});
 	// Generate random default boss name
 	bossName = 'Test_'+getRandomInt(1, 9999);
 
@@ -157,22 +168,6 @@ $(document).ready(function() {
 
 		// Append to DOM
 		document.getElementById('trailsDiv').appendChild(newDiv);
-	});
-
-	// Triggers when user loses focus on bossName field
-	$("#bossName").on("blur", function(e){
-		var str = document.getElementById('bossName').value;
-		// Verifies user input
-		var err = verifyBossName(str);
-		
-		// Shows / Hides the error message
-		if(err){
-			errors = true;
-			$("#error-bossname").css("display","grid");
-		} else {
-			errors = false;
-			$("#error-bossname").css("display","none");
-		}
 	});
 
 	// Triggers when user loses focus on bossLevel field
@@ -350,14 +345,28 @@ $(document).ready(function() {
 		if(form.get('bossName').replace(/\s/g, "") == ''){
 			filename = bossName;
 		} else {
-			filename = form.get('bossName').replace(/\s/g, "_") + '.yml';
+			filename = form.get('bossName').replace(/\s/g, "_").toLowerCase() + '.yml';
 		}
 			filename = filename.replace(/&./g, "");
 			filename = filename.replace(/'/g, "");
 
 		// Generates the YML content
 		var text = '';
-			text = 'isEnabled: '+form.get('isEnabled')+'\r\n';
+			if(form.get('isEnabled') != 'EMPTY'){
+				text += 'isEnabled: '+form.get('isEnabled')+'\r\n';
+			}
+			if(selectedForm == 'worldbossform'){
+				text += 'isRegionalBoss: '+form.get('isRegionalBoss')+'\r\n';
+				if(form.get('spawnLocation').replace(/\s/g, "") != ''){
+					text += 'spawnLocation: '+form.get('spawnLocation')+'\r\n';
+				}
+				if(form.get('spawnCooldown').replace(/\s/g, "") != ''){
+					text += 'spawnCooldown: '+form.get('spawnCooldown')+'\r\n';
+				}
+				if(form.get('leashRadius').replace(/\s/g, "") != ''){
+					text += 'leashRadius: '+form.get('leashRadius')+'\r\n';
+				}
+			}
 			text += 'entityType: '+form.get('entityType')+'\r\n';
 
 			// Most if / else statements here just check if the user left
@@ -368,7 +377,7 @@ $(document).ready(function() {
 			if(form.get('bossName').replace(/\s/g, "") == ''){
 				text += 'name: \''+bossName+'\'\r\n';
 			} else {
-				text += 'name: '+form.get('bossName')+'\r\n';
+				text += 'name: \''+form.get('bossName').replace(/'/g, "\\'")+'\'\r\n';
 			}
 			if(form.get('bossLevel').replace(/\s/g, "") != ''){
 				text += 'level: '+form.get('bossLevel')+'\r\n';
@@ -376,7 +385,9 @@ $(document).ready(function() {
 			if(form.get('bossTimeout').replace(/\s/g, "") != ''){
 				text += 'timeout: '+form.get('bossTimeout')+'\r\n';
 			}
-			text += 'isPersistent: '+form.get('isPersistent')+'\r\n';
+			if(form.get('isPersistent') != 'EMPTY'){
+				text += 'isPersistent: '+form.get('isPersistent')+'\r\n';
+			}
 			if(form.get('bossHealthMultiplier').replace(/\s/g, "") != ''){
 				text += 'healthMultiplier: '+form.get('bossHealthMultiplier')+'\r\n';
 			}
@@ -431,7 +442,9 @@ $(document).ready(function() {
 					text += form.get('bossOffhand')+'\r\n';
 				}
 			}
-			text += 'isBaby: '+form.get('isBaby')+'\r\n';
+			if(form.get('isBaby') != 'EMPTY'){
+				text += 'isBaby: '+form.get('isBaby')+'\r\n';
+			}
 
 			var powersArr = form.getAll('powers[]');
 
@@ -453,16 +466,16 @@ $(document).ready(function() {
 				}
 			}
 			if(form.get('bossSpawnMessage').replace(/\s/g, "") != ''){
-				text += 'spawnMessage: '+form.get('bossSpawnMessage')+'\r\n';
+				text += 'spawnMessage: \''+form.get('bossSpawnMessage').replace(/'/g, "\\'")+'\'\r\n';
 			}
 			if(form.get('bossDeathMessage').replace(/\s/g, "") != ''){
-				text += 'deathMessage: '+form.get('bossDeathMessage')+'\r\n';
+				text += 'deathMessage: \''+form.get('bossDeathMessage').replace(/'/g, "\\'")+'\'\r\n';
 			}
 			if(form.get('bossEscapeMessage').replace(/\s/g, "") != ''){
-				text += 'escapeMessage: '+form.get('bossEscapeMessage')+'\r\n';
+				text += 'escapeMessage: \''+form.get('bossEscapeMessage').replace(/'/g, "\\'")+'\'\r\n';
 			}
 			if(form.get('bossLocationMessage').replace(/\s/g, "") != ''){
-				text += 'locationMessage: '+form.get('bossLocationMessage')+'\r\n';
+				text += 'locationMessage: \''+form.get('bossLocationMessage').replace(/'/g, "\\'")+'\'\r\n';
 			}
 
 			var lootArr = form.getAll('loot[]');
@@ -479,10 +492,10 @@ $(document).ready(function() {
 					}
 				}
 			}
-			if(form.get('dropsEliteMobsLoot').replace(/\s/g, "") != ''){
+			if(form.get('dropsEliteMobsLoot') != 'EMPTY'){
 				text += 'dropsEliteMobsLoot: '+form.get('dropsEliteMobsLoot')+'\r\n';
 			}
-			if(form.get('dropsVanillaLoot').replace(/\s/g, "") != ''){
+			if(form.get('dropsVanillaLoot') != 'EMPTY'){
 				text += 'dropsVanillaLoot: '+form.get('dropsVanillaLoot')+'\r\n';
 			}
 
@@ -512,7 +525,7 @@ $(document).ready(function() {
 					text += '\r\n';
 					for(let i=0; i<dmgMsgArr.length; i++){
 						if(dmgMsgArr[i].replace(/\s/g, "") != ''){
-							text += '- '+dmgMsgArr[i]+'\r\n';
+							text += '- \''+dmgMsgArr[i].replace(/'/g, "\\'")+'\'\r\n';
 						}
 					}
 				}
@@ -527,7 +540,7 @@ $(document).ready(function() {
 					text += '\r\n';
 					for(let i=0; i<dmgdMsgArr.length; i++){
 						if(dmgdMsgArr[i].replace(/\s/g, "") != ''){
-							text += '- '+dmgdMsgArr[i]+'\r\n';
+							text += '- \''+dmgdMsgArr[i].replace(/'/g, "\\'")+'\'\r\n';
 						}
 					}
 				}
@@ -595,19 +608,6 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// If str contains a space, make sure it starts and ends with a single quote
-function verifyBossName(str){
-	if(str.includes(' ')){
-		if(!/^'.+'$/.test(str)){
-			return true;
-		} else {
-			return false;
-		}
-	} else {
-		return false;
-	}
 }
 
 // If str contains anything else but dynamic, make sure it's an integer between 1 and 150

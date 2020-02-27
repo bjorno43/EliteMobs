@@ -14,6 +14,13 @@
 	</head>
 	<body>
 		<div class="container">
+			<div class="form-group">
+				<span>Custom form:</span>
+				<select id="changeForm" class="form-field" name="isEnabled">
+					<option value="bossform">Custom Boss</option>
+					<option value="worldbossform">Custom World Boss</option>
+				</select>
+			</div><br/><br/>
 			<form id="bossForm">
 				<div class="grid">
 					<div class="form-group">
@@ -46,6 +53,7 @@
 					<div class="form-group">
 						<span>isEnabled:</span>
 						<select id="isEnabled" class="form-field" name="isEnabled">
+							<option value="EMPTY">EMPTY</option>
 							<option value="true">True</option>
 							<option value="false">False</option>
 						</select>
@@ -56,6 +64,84 @@
 						</div>
 					</div>
 					<div></div>
+				</div>
+				<div class="grid worldBoss">
+					<div class="form-group">
+						<span>isRegionalBoss:</span>
+						<select id="isRegionalBoss" class="form-field" name="isRegionalBoss">
+							<option value="true">True</option>
+							<option value="false">False</option>
+						</select>
+					</div>
+					<div>
+						<div class="help-tip">
+							<p>Sets whether the boss is a regional boss. Regional bosses are another name for World Bosses, so you want to set that to true. Read more <a href="https://github.com/MagmaGuy/EliteMobs/wiki/%5BGuide%5D-Creating-World-Bosses#isregionalboss" target="_blank">here</a>.</p>
+						</div>
+					</div>
+					<div></div>
+				</div>
+				<div class="grid worldBoss">
+					<div class="form-group">
+						<span>spawnLocation:</span>
+						<input type="text" id="spawnLocation" name="spawnLocation" class="form-field"/>
+					</div>
+					<div>
+						<div class="help-tip">
+							<p>Sets the spawn location for your World Boss. The world name is case-sensitive, pitch and yaw can be set to 0 if you don't care about those. Read more <a href="https://github.com/MagmaGuy/EliteMobs/wiki/%5BGuide%5D-Creating-World-Bosses#spawnlocation" target="_blank">here</a>.</p>
+						</div>
+					</div>
+					<div></div>
+				</div>
+				<div id="error-bossname" class="grid errorContainer">
+					<div class="error">
+						<p>Error: The correct format should be worldName,x,y,z,pitch,yaw!</p>
+					</div>
+					<div>
+					</div>
+					<div>
+					</div>
+				</div>
+				<div class="grid worldBoss">
+					<div class="form-group">
+						<span>spawnCooldown:</span>
+						<input id="spawnCooldown" class="form-field" name="spawnCooldown" type="number" min="30" step="1" placeholder="time in minutes"/>
+					</div>
+					<div>
+						<div class="help-tip">
+							<p>Sets how long it takes for the boss to respawn, in minutes. Shouldn't be under 30 minutes. Read more <a href="https://github.com/MagmaGuy/EliteMobs/wiki/%5BGuide%5D-Creating-World-Bosses#spawncooldown" target="_blank">here</a>.</p>
+						</div>
+					</div>
+					<div></div>
+				</div>
+				<div id="error-timeout" class="grid errorContainer">
+					<div class="error">
+						<p>Error: The spawnCooldown can only be a positive natural number and should not be lower than 30!</p>
+					</div>
+					<div>
+					</div>
+					<div>
+					</div>
+				</div>
+				<div class="grid worldBoss">
+					<div class="form-group">
+						<span>leashRadius:</span>
+						<input id="leashRadius" class="form-field" name="leashRadius" type="number" min="1" step="1" placeholder="15"/>
+					</div>
+					<div>
+						<div class="help-tip">
+							<p>Sets the radius from the spawnLocation that the World Boss go to before getting teleported back to its spawn point. This prevent players from dragging the boss to a location where it could be easier to fight it. Read more <a href="https://github.com/MagmaGuy/EliteMobs/wiki/%5BGuide%5D-Creating-World-Bosses#leashradius" target="_blank">here</a>.</p>
+						</div>
+					</div>
+					<div></div>
+				</div>
+				<div id="error-timeout" class="grid errorContainer">
+					<div class="error">
+						<p>Error: The leashRadius can only be a positive natural number!</p>
+					</div>
+					<div>
+					</div>
+					<div>
+					</div>
 				</div>
 				<div class="grid">
 					<div class="form-group">
@@ -146,6 +232,7 @@
 					<div class="form-group">
 						<span>isPersistent:</span>
 						<select id="isPersistent" class="form-field" name="isPersistent">
+							<option value="EMPTY">EMPTY</option>
 							<option value="false">False</option>
 							<option value="true">True</option>
 						</select>
@@ -290,6 +377,7 @@
 							<option value="GOLDEN_AXE">GOLDEN_AXE</option>
 							<option value="DIAMOND_SWORD">DIAMOND_SWORD</option>
 							<option value="DIAMOND_AXE">DIAMOND_AXE</option>
+							<option value="BOW">BOW</option>
 						</select>
 					</div>
 					<div>
@@ -314,6 +402,7 @@
 							<option value="GOLDEN_AXE">GOLDEN_AXE</option>
 							<option value="DIAMOND_SWORD">DIAMOND_SWORD</option>
 							<option value="DIAMOND_AXE">DIAMOND_AXE</option>
+							<option value="BOW">BOW</option>
 						</select>
 					</div>
 					<div>
@@ -327,8 +416,9 @@
 					<div class="form-group">
 						<span>isBaby:</span>
 						<select id="isBaby" class="form-field" name="isBaby">
-							<option value="false">False</option>
+							<option value="EMPTY">EMPTY</option>
 							<option value="true">True</option>
+							<option value="false">False</option>
 						</select>
 					</div>
 					<div>
@@ -467,6 +557,7 @@
 					<div class="form-group">
 						<span>dropsEliteMobsLoot:</span>
 						<select id="dropsEliteMobsLoot" class="form-field" name="dropsEliteMobsLoot">
+							<option value="EMPTY">EMPTY</option>
 							<option value="true">True</option>
 							<option value="false">False</option>
 						</select>
@@ -482,6 +573,7 @@
 					<div class="form-group">
 						<span>dropsVanillaLoot:</span>
 						<select id="dropsVanillaLoot" class="form-field" name="dropsVanillaLoot">
+							<option value="EMPTY">EMPTY</option>
 							<option value="true">True</option>
 							<option value="false">False</option>
 						</select>
@@ -586,7 +678,7 @@
 				</div>
 				<button class="ymlButton" id="generate">Generate YML</button>
 			</form>
-			<!--<form id="itemForm">
+			<!--<form id="worldBossForm">
 				<div class="grid">
 					<div class="form-group">
 						<span id="form-first-left">Boss name:</span>
