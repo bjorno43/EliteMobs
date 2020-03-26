@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>EliteMobs - Webapp</title>
+
+		<link type="text/css" rel="stylesheet" href="./css/materialize.min.css"/>
+		<link type="text/css" rel="stylesheet" href="./css/jquery-ui.min.css"/>
+		<link type="text/css" rel="stylesheet" href="./css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="./css/workspace.css"/>
+		<link type="text/css" rel="stylesheet" href="./css/forms.css"/>
+
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/globalFunctions.js"></script>
+		<script type="text/javascript" src="js/bossForm.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+	</head>
+	<body>
+		<div id="modal" class="modal">
+			<div class="modal-content">
+				<img class="logo" src="./images/elitemobs.png">
+				<h3 class="title">EliteMobs WebApp</h3>
+				<p class="infoText">
+					Welcome to the Elite Mobs webapp.<br/><br/>
+					This app is made for both the absolute beginner and those that just want an easier way of creating anything custom.<br/>
+					Choose Interactive Mode if you want as much help as possible! This mode is not recommended for experienced users as the excessive handholding will most likely be more annoying than useful. Choose Select Forms if you're an experienced user. If you choose multiple forms at the same time, they'll automatically connect with eachother where possible.
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button id="btnInteractive" class="waves-effect waves-light btn green lighten-1">Interactive Mode</button>
+				<button id="btnFormSelect" class="waves-effect waves-light btn green lighten-1">Select Forms</button>
+			</div>
+		</div>
+		<div id="interactive" class="modal">
+			<div class="modal-content">
+				<img class="logo" src="./images/elitemobs.png">
+				<h3 class="title">EliteMobs WebApp</h3>
+				<p class="infoText">First let us know what exactly it is that you want to do. Please select everything that applies below and click on Choose Workspace.</p>
+				<div class="checkbox checkFirst">
+					<input type="checkbox" value="1" id="checkCustomBoss" name="check" />
+					<label for="checkCustomBoss"></label>
+					<p class="checkboxTxt">I want to create a Custom Boss.</p>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" value="1" id="checkCustomWorldBoss" name="check" disabled/>
+					<label for="checkCustomWorldBoss"></label>
+					<p class="checkboxTxt">I want to make my Custom Boss a World Boss.</p>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" value="1" id="checkCustomLoot" name="check" />
+					<label for="checkCustomLoot"></label>
+					<p class="checkboxTxt">I want to create Custom Loot.</p>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" value="1" id="checkCustomNPC" name="check" />
+					<label for="checkCustomNPC"></label>
+					<p class="checkboxTxt">I want to create a Custom NPC.</p>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" value="1" id="checkCustomLootBox" name="check" />
+					<label for="checkCustomLootBox"></label>
+					<p class="checkboxTxt">I want to create a Custom TreasureChest.</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="waves-effect waves-light btn green lighten-1 btnBack">Back</button>
+				<button class="waves-effect waves-light btn green lighten-1 btnWork">Choose workspace</button>
+			</div>
+		</div>
+		<div id="formselect" class="modal">
+			<div class="modal-content">
+				<img class="logo" src="./images/elitemobs.png">
+				<h3 class="title">EliteMobs WebApp</h3>
+				<p class="infoText">Select the forms you wish to use.</p>
+				<div class="checkbox checkFirst">
+					<input type="checkbox" value="1" id="checkCustomBossForm" name="check" />
+					<label for="checkCustomBossForm"></label>
+					<p class="checkboxTxt">Custom Boss form.</p>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" value="1" id="checkCustomWorldBossForm" name="check" disabled/>
+					<label for="checkCustomWorldBossForm"></label>
+					<p class="checkboxTxt">Custom World Boss form.</p>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" value="1" id="checkCustomLootForm" name="check" />
+					<label for="checkCustomLootForm"></label>
+					<p class="checkboxTxt">Custom Loot form.</p>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" value="1" id="checkCustomNPCForm" name="check" />
+					<label for="checkCustomNPCForm"></label>
+					<p class="checkboxTxt">Custom NPC form.</p>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" value="1" id="checkCustomLootBoxForm" name="check" />
+					<label for="checkCustomLootBoxForm"></label>
+					<p class="checkboxTxt">Custom TreasureChest form.</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="waves-effect waves-light btn green lighten-1 btnBack">Back</button>
+				<button class="waves-effect waves-light btn green lighten-1 btnWork">Choose workspace</button>
+			</div>
+		</div>
+		<div id="layoutselect" class="modal">
+			<div class="modal-content">
+				<img class="logo" src="./images/elitemobs.png">
+				<h3 class="title">EliteMobs WebApp</h3>
+				<p class="infoText">
+					Please select your desired layout:<br/><br/>
+					<label>
+						<input name="layoutStyle" type="radio" value="accordion" selected/>
+						<span>Accordion</span>
+					</label><br/>
+					<label>
+						<input name="layoutStyle" type="radio" value="horizontal"/>
+						<span>Horizontal</span>
+					</label><br/>
+					<label>
+						<input name="layoutStyle" type="radio" value="tabs"/>
+						<span>Tabs</span>
+					</label>
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button class="waves-effect waves-light btn green lighten-1 btnBack">Back</button>
+				<button class="waves-effect waves-light btn green lighten-1 btnBegin">Begin</button>
+			</div>
+		</div>
+		<div id="workspace" class="formHolder"></div>
+
+		<script type="text/javascript" src="js/materialize.min.js"></script>
+	</body>
+</html>
