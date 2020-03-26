@@ -1,0 +1,330 @@
+.form_container {
+	display: inline-block;
+}
+
+.formDiv {
+	width: 430px;
+	float: left;
+}
+
+.ymlDiv {
+	min-width: 300px;
+	padding-left: 20px;
+	float: left;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: 350px 50px auto;
+	grid-template-rows: auto;
+	position: relative;
+}
+
+.errorContainer {
+	display: none;
+	height: 35px;
+}
+
+.error {
+	font-size: 12px;
+	padding: 2px;
+	color: red;
+	border: 1px solid red;
+}
+
+.error p{
+	margin-top: 0px;
+}
+
+.labels {
+	width: 100px;
+	float: left;
+}
+
+.formElements {
+	width: 200px;
+	float: left;
+}
+
+#toggle,
+#toggle2,
+#toggle3,
+#toggle4,
+#toggle5 {
+	display: none;
+}
+
+.buttons {
+	position: relative;
+}
+
+.add {
+	background-color: #4CAF50;
+	width: 30px;
+	height: 30px;
+	margin-top: 6px;
+	border: none;
+	border-radius: 15px;
+	color: white;
+	padding: 3px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.button, .colorBtn {
+	z-index: 999;
+	width: 29px;
+	height: 29px;
+	margin-top: 6px;
+	background: #fff;
+	border-radius: 100%;
+	transition: all 0.5s ease-in-out;
+	box-shadow: 1px 3px 10px 0 rgba(#000000, 0.3);
+	cursor: pointer;
+	display: inline-block;
+	border: 1px solid black;
+}
+
+.colors {
+	transform: translateX(-10%);
+	width: 150px;
+	display: none;
+	top: 0px;
+	left: 30px;
+	transition: all 0.5s ease-in-out;
+	background: #FFF;
+	border-radius: 5px;
+	transform: translateY(0%);
+	box-shadow: 2px 3px 10px 0 rgba(#000000, 0.1);
+	position: absolute;
+	z-index: 9999;
+}
+
+.blackBtn { background: #000}
+.darkBlueBtn { background: #00A}
+.darkGreenBtn { background: #0A0}
+.darkAquaBtn { background: #0AA}
+.darkRedBtn { background: #A00}
+.purpleBtn { background: #A0A}
+.orangeBtn { background: #FA0}
+.lightGrayBtn { background: #AAA}
+.darkGrayBtn { background: #555}
+.blueBtn { background: #55F}
+.lightGreenBtn { background: #5F5}
+.aquaBtn { background: #5FF}
+.redBtn { background: #F55}
+.pinkBtn { background: #F5F}
+.yellowBtn { background: #FF5}
+.whiteBtn { background: #FFF}
+
+#toggle:checked ~ .colors,
+#toggle2:checked ~ .colors,
+#toggle3:checked ~ .colors,
+#toggle4:checked ~ .colors,
+#toggle5:checked ~ .colors {
+  display: inline-block;
+  transform: translateX(4%);
+}
+
+#toggle:checked ~ #bossNamePallete,
+#toggle2:checked ~ #spawnMessagePallete,
+#toggle3:checked ~ #deathMessagePallete,
+#toggle4:checked ~ #escapeMessagePallete,
+#toggle5:checked ~ #locationMessagePallete {
+  transform: rotate(135deg);
+   box-shadow: 0 0 0 0 transparent;
+}
+
+.form-field {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    -webkit-appearance: none;
+    color: #000;
+    border: 1px solid #7a7a7a;
+    background: #fff;
+    transition: border .3s ease;
+}
+.form-field::placeholder {
+	color: #a2a2a2;
+}
+.form-field:focus {
+	outline: none;
+	border-color: #275EFE;
+}
+
+.form-group {
+    position: relative;
+    display: flex !important;
+    width: 100%;
+}
+
+.form-group > span,
+.form-field {
+	white-space: nowrap;
+	display: block;
+}
+.form-field:not(:first-child):not(:last-child), .form-group > span:not(:first-child):not(:last-child) {
+	border-radius: 0;
+}
+#form-first-left {
+	border-radius: 6px 0 0 0;
+}
+#form-last-left {
+	border-radius: 0 0 0 6px;
+}
+#bossName {
+	border-radius: 0 6px 0 0;
+}
+#bossSpawnChance {
+	border-radius: 0 0 6px 0;
+}
+.form-field:not(:first-child), .form-group > span:not(:first-child) {
+	margin-left: -1px;
+}
+
+.form-group .form-field {
+	position: relative;
+	z-index: 1;
+	flex: 1 1 auto;
+	width: 1%;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.form-group > span {
+	width: 135px;
+	text-align: center;
+	padding: 8px 12px;
+	font-size: 14px;
+	line-height: 25px;
+	color: #fff;
+	background: #bfbfbf;
+	border: 1px solid #7a7a7a;
+	transition: background .3s ease, border .3s ease, color .3s ease;
+}
+
+.form-group:focus-within, .form-group:focus-within > span {
+	color: #fff;
+	background: #678EFE;
+	border-color: #275EFE;
+}
+
+.help-tip{
+    position: absolute;
+    top: 6px;
+    left: 360px;
+    text-align: center;
+    background-color: #bfbfbf;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+    cursor: default;
+}
+
+.help-tip:before{
+    content:'?';
+    font-weight: bold;
+    color:#fff;
+}
+
+.help-tip:hover p{
+    display:block;
+    transform-origin: 100% 0%;
+
+    -webkit-animation: fadeIn 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
+
+}
+
+.help-tip p{    /* The tooltip */
+    display: none;
+    text-align: left;
+    background-color: #1E2021;
+    padding: 20px;
+    width: 300px;
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    right: -4px;
+    color: #FFF;
+    font-size: 13px;
+    line-height: 1.4;
+	z-index:99999;
+}
+
+.help-tip p:before{ /* The pointer of the tooltip */
+    position: absolute;
+    content: '';
+    width:0;
+    height: 0;
+    border:6px solid transparent;
+    border-bottom-color:#1E2021;
+    right:10px;
+    top:-12px;
+}
+
+.help-tip p:after{ /* Prevents the tooltip from being hidden */
+    width:100%;
+    height:40px;
+    content:'';
+    position: absolute;
+    top:-40px;
+    left:0;
+}
+
+.ymlButton {
+	margin-top: 18px;
+	margin-left: 128px;
+	background-color:#bfbfbf;
+	border-radius:28px;
+	border:1px solid #7a7a7a;
+	display:inline-block;
+	cursor:pointer;
+	color:#fff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.ymlButton:hover {
+	background-color:#7a7a7a;
+}
+.ymlButton:active {
+	position:relative;
+	top:1px;
+}
+
+.worldBoss {
+	display: none;
+}
+
+
+/* CSS animation */
+
+@-webkit-keyframes fadeIn {
+    0% { 
+        opacity:0; 
+        transform: scale(0.6);
+    }
+
+    100% {
+        opacity:100%;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity:0; }
+    100% { opacity:100%; }
+}
