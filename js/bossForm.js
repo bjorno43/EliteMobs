@@ -15,11 +15,11 @@ function bossFormFunctions(){
 	$('#bossName').attr("placeholder", bossName);
 
 	// Creates color pallets next to form fields that support them
-	$("#bossNameColors").html(createColorPallete('bossName'));
-	$("#spawnMessageNameColors").html(createColorPallete('bossSpawnMessage'));
-	$("#deathMessageColors").html(createColorPallete('bossDeathMessage'));
-	$("#escapeMessageColors").html(createColorPallete('bossEscapeMessage'));
-	$("#locationMessageColors").html(createColorPallete('bossLocationMessage'));
+	$("#bossNameColors").html(createColorPallete());
+	$("#spawnMessageNameColors").html(createColorPallete());
+	$("#deathMessageColors").html(createColorPallete());
+	$("#escapeMessageColors").html(createColorPallete());
+	$("#locationMessageColors").html(createColorPallete());
 
 	// Handles adding extra input field to Powers
 	$("#addPowerBtn").on("click", function(e){

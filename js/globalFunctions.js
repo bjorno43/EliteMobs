@@ -6,7 +6,7 @@ function getRandomInt(min, max) {
 }
 
 // This function just creates a basic html color pallette
-function createColorPallete(ele) {
+function createColorPallete() {
 	var newDiv = document.createElement('div');
 	var btnClasses = [
 		'blackBtn',
@@ -34,7 +34,8 @@ function createColorPallete(ele) {
 		newLabel.className = 'colorBtn';
 		newLabel.classList.add(btnClasses[i]);
 		newLabel.onclick = function(){
-			const element = document.getElementById(ele);
+			const element = this.parentNode.parentNode.parentNode.parentNode.parentNode.children[0].children[1];
+			
 			element.value += '&'+labels[i];
 		}
 		newDiv.appendChild(newLabel);
