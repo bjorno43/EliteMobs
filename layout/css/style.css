@@ -1,0 +1,40 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+header, main, footer {
+	padding-left: 300px;
+}
+
+ul.sidenav.sidenav-fixed ul.collapsible-accordion a.collapsible-header {
+	padding: 0 30px;
+}
+
+ul.sidenav.sidenav-fixed ul.collapsible-accordion .collapsible-body li a {
+	padding: 0 37.5px 0 45px;
+}
+
+.logo {
+	width: 250px;
+}
+
+.draggable {
+	position: absolute;
+	z-index: 9;
+	text-align: center;
+}
+
+.draggable-header {
+	padding: 10px;
+	cursor: move;
+	z-index: 10;
+	background-color: #2196F3;
+	color: #fff;
+}
+
+@media only screen and (max-width : 992px) {
+	header, main, footer {
+		padding-left: 0;
+	}
+}
